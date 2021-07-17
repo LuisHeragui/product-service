@@ -35,7 +35,7 @@ public class ServiceCategoryImp implements ServiceCategory {
 
 	@Override
 	public void updateCategory(Category category, int id) throws Exception {
-		// TODO Auto-generated method stub
+		repositoryCategory.updateCategory(category, id);
 	}
 
 	@Override

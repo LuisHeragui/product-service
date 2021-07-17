@@ -41,7 +41,11 @@ public class RepositoryCategory {
 	}
 	
 	public void updateCategory(Category categoria, int id) throws Exception {
-		
+		try {
+			jdbcTemplate.update("{CALL st_update_category(?, ?)}", categoria.getCategoria(), id);
+		} catch(UncategorizedSQLException e) {
+			throw new Exception(e.getSQLException().getLocalizedMessage());
+		}
 	}
 	
 	public void deleteCategory(int id) throws Exception {

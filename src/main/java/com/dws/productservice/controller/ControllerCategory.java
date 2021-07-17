@@ -57,8 +57,12 @@ public class ControllerCategory {
 			serviceCategory.updateCategory(categoria, id);
 			return new ResponseEntity<>(HttpStatus.OK);			
 		} catch(Exception e) {
-			throw new ApiException(HttpStatus.BAD_REQUEST, e.getLocalizedMessage());
-		}
+			if (e.getMessage().equals("La categoría no existe")) {
+				throw new ApiException(HttpStatus.NOT_FOUND, e.getLocalizedMessage());
+			} else {				
+				throw new ApiException(HttpStatus.BAD_REQUEST, e.getLocalizedMessage());
+			}
+		} 
 	}
 	
 	@DeleteMapping("/{id}")
