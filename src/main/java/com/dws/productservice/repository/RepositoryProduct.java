@@ -46,9 +46,9 @@ public class RepositoryProduct {
 		}
 	}
 	
-	public void updateProduct(DtoProduct product, String codigo) throws Exception {
+	public void updateStockProduct(DtoProduct product, String codigo) throws Exception {
 		try {
-			jdbcTemplate.update("{CALL st_update_product(?, ?)}", product.getProduct(), codigo);
+			jdbcTemplate.update("{CALL st_update_stock_product(?, ?)}", product.getCantidad(), codigo);
 		} catch(UncategorizedSQLException e) {
 			throw new Exception(e.getSQLException().getLocalizedMessage());
 		}

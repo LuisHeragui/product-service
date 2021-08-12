@@ -35,9 +35,8 @@ public class ServiceProductImp implements ServiceProduct {
 	}
 
 	@Override
-	public void updateStockProduct(String codigo, int cantidad) throws Exception {
-		// TODO Auto-generated method stub
-
+	public void updateStockProduct(DtoProduct product, String codigo) throws Exception {
+		repositoryProduct.updateStockProduct(product, codigo);
 	}
 
 	@Override

@@ -52,7 +52,17 @@ public class ControllerProduct {
 	}
 		
 	@PutMapping("/{codigo}")
-	public ResponseEntity<Object> updateStockProduct() throws Exception { 
+	public ResponseEntity<Object> updateStockProduct(@RequestBody DtoProduct product, @PathVariable("codigo") String codigo) throws Exception { 
+		try {
+			serviceProduct.updateStockProduct(product, codigo);
+			return new ResponseEntity<>(HttpStatus.CREATED);			
+		} catch(Exception e) {
+			if (e.getMessage().equals("El código del producto no existe")) {
+				throw new ApiException(HttpStatus.NOT_FOUND, e.getLocalizedMessage());
+			} else {				
+				throw new ApiException(HttpStatus.BAD_REQUEST, e.getLocalizedMessage());
+			}
+		}
 	}
 	
 	@DeleteMapping("/{codigo}")

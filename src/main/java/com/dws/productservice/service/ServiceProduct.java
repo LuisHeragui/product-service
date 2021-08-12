@@ -12,7 +12,7 @@ public interface ServiceProduct {
 	
 	public void createProduct(DtoProduct product) throws Exception;
 	
-	public void updateStockProduct(String codigo, int cantidad) throws Exception;
+	public void updateStockProduct(DtoProduct product, String codigo) throws Exception;
 	
 	public void deleteProduct(String codigo) throws Exception;
 }
